@@ -8,4 +8,5 @@ export type VideoCardData = {
   thumbnailClass: string;
   title: string;
   views: string;
+  miniature: string
 };

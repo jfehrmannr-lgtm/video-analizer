@@ -1,41 +1,7 @@
 import FeaturedVideo from "@/src/components/Archive/FeaturedVideo.server";
 import VideoCard from "@/src/components/VideoCard/VideoCard.server";
+import { getBarbakahnVideos } from "@/src/service/getVideos";
 import type { VideoCardData } from "@/src/types/video.types";
-
-const videos: VideoCardData[] = [
-  {
-    category: "Field notes",
-    date: "May 18, 2024",
-    duration: "18:42",
-    thumbnailClass: "thumbnail-circuit",
-    title: "Building a better lens for the things we watch",
-    views: "12.8K views",
-  },
-  {
-    category: "Conversations",
-    date: "Apr 29, 2024",
-    duration: "32:16",
-    thumbnailClass: "thumbnail-studio",
-    title: "The long way around: a conversation on making",
-    views: "9.4K views",
-  },
-  {
-    category: "Process",
-    date: "Apr 11, 2024",
-    duration: "11:05",
-    thumbnailClass: "thumbnail-process",
-    title: "Inside the process: from rough cut to final frame",
-    views: "16.2K views",
-  },
-  {
-    category: "Field notes",
-    date: "Mar 27, 2024",
-    duration: "24:09",
-    thumbnailClass: "thumbnail-landscape",
-    title: "A quiet study of movement, light, and place",
-    views: "7.1K views",
-  },
-];
 
 const filters = [
   { className: "rounded-full bg-[var(--paper)] px-4 py-2.5 text-[var(--ink)]", label: "All videos" },
@@ -48,7 +14,13 @@ const filters = [
  *
  * @returns The latest archive section.
  */
-const LatestArchive = () => {
+const LatestArchive = async () => {
+  const barbakahnId = process.env.YOUTUBE_CHANNEL_ID;
+  
+  const videos: VideoCardData[] = await getBarbakahnVideos(barbakahnId)
+
+  console.debug("videos", videos)
+
   return (
     <section className="border-y border-[var(--line)] bg-[var(--ink-soft)]" id="archive">
       <div className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-10 lg:py-24">

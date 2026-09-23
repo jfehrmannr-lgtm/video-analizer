@@ -2,6 +2,10 @@
 
 ## 2026-09-23
 
+- Rendered the YouTube thumbnail URL from video data inside the reusable `VideoCard` component.
+
+## 2026-09-23
+
 - Organized the archive into layout and feature component boundaries.
 - Integrated the persistent header and footer with the Next.js App Router root layout.
 
