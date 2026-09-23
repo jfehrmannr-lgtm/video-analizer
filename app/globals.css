@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0c0e0e;
+  --ink-soft: #111414;
+  --surface: #171b1a;
+  --paper: #f1f1eb;
+  --muted: #8b928d;
+  --line: rgba(241, 241, 235, 0.1);
+  --line-strong: rgba(241, 241, 235, 0.18);
+  --accent: #d8fa68;
+}
+
+@theme inline {
+  --color-background: var(--ink);
+  --color-foreground: var(--paper);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.thumbnail-feature {
+  background:
+    linear-gradient(115deg, rgba(216, 250, 104, 0.12), transparent 45%),
+    linear-gradient(135deg, #27443b 0%, #182b27 48%, #101615 100%);
+}
+
+.thumbnail-circuit {
+  background:
+    linear-gradient(135deg, rgba(216, 250, 104, 0.32), transparent 42%),
+    linear-gradient(145deg, #344b40 0%, #152320 55%, #101514 100%);
+}
+
+.thumbnail-studio {
+  background:
+    linear-gradient(135deg, rgba(235, 190, 148, 0.24), transparent 44%),
+    linear-gradient(145deg, #4b3d36 0%, #262221 52%, #121515 100%);
+}
+
+.thumbnail-process {
+  background:
+    linear-gradient(135deg, rgba(142, 174, 212, 0.34), transparent 44%),
+    linear-gradient(145deg, #344553 0%, #1a2930 52%, #101516 100%);
+}
+
+.thumbnail-landscape {
+  background:
+    linear-gradient(135deg, rgba(217, 198, 132, 0.3), transparent 44%),
+    linear-gradient(145deg, #4c4b37 0%, #292b26 52%, #121615 100%);
+}
