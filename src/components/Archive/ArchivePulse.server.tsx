@@ -1,18 +1,16 @@
-const formatDistribution = [
-  { label: "Field notes", value: "42%" },
-  { label: "Conversations", value: "28%" },
-  { label: "Process", value: "19%" },
-  { label: "Other", value: "11%" },
-];
+import type { ArchiveStats } from "@/src/utils/video.utils";
+
+type ArchivePulseProps = {
+  formatDistribution: ArchiveStats["formatDistribution"];
+};
 
 /**
  * Renders the archive insights and format distribution.
  *
+ * @param props - Derived format distribution values.
  * @returns The archive pulse section.
  */
-const ArchivePulse = () => {
-  console.debug("Component not server")
-
+const ArchivePulse = ({ formatDistribution }: ArchivePulseProps) => {
   return (
     <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-28" id="about">
       <div>

@@ -14,7 +14,7 @@ const VideoCard = ({ video }: VideoCardProps) => {
   return (
     <article className="group">
       <a className="block" href="#archive">
-        <div className={`${video.thumbnailClass} relative aspect-[1.45] overflow-hidden rounded-xl border border-[var(--line-strong)]`} role="img" aria-label={`Abstract placeholder thumbnail for ${video.title}`}>
+        <div className={`${video.thumbnailClass} relative aspect-[1.45] overflow-hidden rounded-xl border border-[var(--line-strong)]`}>
           {/* Native img supports the YouTube thumbnail URL without adding remote image configuration. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -23,7 +23,7 @@ const VideoCard = ({ video }: VideoCardProps) => {
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
-          <span className="absolute bottom-3 left-3 text-[10px] font-medium uppercase tracking-[0.16em] text-white/75">{video.category}</span>
+          <span className="absolute bottom-3 left-3 text-[10px] font-medium uppercase tracking-[0.16em] text-white/75">{video.format}</span>
           <span className="absolute bottom-3 right-3 rounded bg-black/35 px-1.5 py-1 text-[10px] font-medium text-white/85">{video.duration}</span>
         </div>
         <div className="mt-4">

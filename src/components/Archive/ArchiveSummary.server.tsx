@@ -1,16 +1,23 @@
-const archiveMetrics = [
-  { label: "Videos indexed", value: "248" },
-  { label: "Total watch time", value: "61h" },
-  { label: "Formats", value: "12" },
-  { label: "First published", value: "2018" },
-];
+import type { ArchiveStats } from "@/src/utils/video.utils";
+
+type ArchiveSummaryProps = {
+  stats: ArchiveStats;
+};
 
 /**
  * Renders the archive status and summary metrics.
  *
+ * @param props - Derived archive statistics.
  * @returns The archive summary panel.
  */
-const ArchiveSummary = () => {
+const ArchiveSummary = ({ stats }: ArchiveSummaryProps) => {
+  const archiveMetrics = [
+    { label: "Videos indexed", value: stats.videoCount.toString() },
+    { label: "Total watch time", value: stats.totalWatchTime },
+    { label: "Formats", value: stats.formatCount.toString() },
+    { label: "First published", value: stats.firstPublished },
+  ];
+
   return (
     <aside className="border-l border-[var(--line)] pl-6 lg:mb-2" aria-label="Archive summary">
       <div className="mb-10 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
