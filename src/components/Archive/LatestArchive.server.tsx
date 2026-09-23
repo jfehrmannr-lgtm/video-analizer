@@ -1,6 +1,6 @@
-import FeaturedVideo from "@/components/archive/FeaturedVideo";
-import VideoCard from "@/components/archive/VideoCard";
-import type { VideoCardData } from "@/types/video.types";
+import FeaturedVideo from "@/src/components/Archive/FeaturedVideo.server";
+import VideoCard from "@/src/components/VideoCard/VideoCard.server";
+import type { VideoCardData } from "@/src/types/video.types";
 
 const videos: VideoCardData[] = [
   {

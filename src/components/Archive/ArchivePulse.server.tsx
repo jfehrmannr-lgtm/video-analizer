@@ -11,6 +11,8 @@ const formatDistribution = [
  * @returns The archive pulse section.
  */
 const ArchivePulse = () => {
+  console.debug("Component not server")
+
   return (
     <section className="mx-auto grid w-full max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-28" id="about">
       <div>

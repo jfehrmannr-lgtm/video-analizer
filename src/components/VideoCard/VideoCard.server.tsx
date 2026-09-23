@@ -1,4 +1,4 @@
-import type { VideoCardData } from "@/types/video.types";
+import type { VideoCardData } from "@/src/types/video.types";
 
 type VideoCardProps = {
   video: VideoCardData;

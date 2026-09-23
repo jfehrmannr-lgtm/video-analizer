@@ -1,5 +1,5 @@
-import ArchiveSummary from "@/components/archive/ArchiveSummary";
-import SearchForm from "@/components/archive/SearchForm";
+import ArchiveSummary from "@/src/components/Archive/ArchiveSummary.server";
+import SearchForm from "@/src/components/SearchForm/SearchForm.client";
 
 /**
  * Renders the archive introduction and discovery entry point.
