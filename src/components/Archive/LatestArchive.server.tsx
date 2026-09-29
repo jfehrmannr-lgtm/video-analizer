@@ -1,12 +1,9 @@
-import FeaturedVideo from "@/src/components/Archive/FeaturedVideo.server";
-import VideoCard from "@/src/components/VideoCard/VideoCard.server";
-import type { VideoCardData, VideoFilter, VideoView } from "@/src/types/video.types";
+import type { VideoFilter, VideoView } from "@/src/types/video.types";
+import LatestArchiveClient from "./LatestArchive.client";
 
 type LatestArchiveProps = {
   activeFilter: VideoFilter;
   activeView: VideoView;
-  searchQuery: string;
-  videos: VideoCardData[];
 };
 
 const filters: Array<{ label: string; value: VideoFilter }> = [
@@ -23,14 +20,13 @@ const views: Array<{ label: string; value: VideoView }> = [
 /**
  * Renders the latest archive content and its filtered video collection.
  *
- * @param props - Videos and active URL filter state.
+ * @param props - Active URL filter state.
  * @returns The latest archive section.
  */
-const LatestArchive = ({ activeFilter, activeView, searchQuery, videos }: LatestArchiveProps) => {
+const LatestArchive = ({ activeFilter, activeView }: LatestArchiveProps) => {
   const getArchiveHref = (view: VideoView, filter: VideoFilter): string => {
     const params = new URLSearchParams();
 
-    if (searchQuery) params.set("q", searchQuery);
     params.set("view", view);
     if (filter !== "all") params.set("format", filter);
 
@@ -73,19 +69,7 @@ const LatestArchive = ({ activeFilter, activeView, searchQuery, videos }: Latest
           </div>
         </div>
 
-        <FeaturedVideo video={videos[0] ?? null} />
-
-        {videos.length > 0 ? (
-          <div className="mt-16 grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {videos.map((video) => (
-              <VideoCard key={video.id} video={video} />
-            ))}
-          </div>
-        ) : (
-          <p className="mt-16 border-t border-[var(--line)] pt-6 text-sm text-[var(--muted)]">
-            No videos match this search.
-          </p>
-        )}
+        <LatestArchiveClient />
       </div>
     </section>
   );

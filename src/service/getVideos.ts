@@ -62,11 +62,14 @@ const youtubeCategoryNames: Record<string, string> = {
  * Fetches and transforms the latest videos from Barbakahn's YouTube channel.
  *
  * @param channelId - Optional verified channel ID. If omitted, the channel is resolved by name.
+ * @param searchFilter - Optional search term used to filter the channel's videos.
  * @returns Transformed video data ready for archive presentation.
  */
 export const getBarbakahnVideos = async (
   channelId?: string,
+  searchFilter?: string,
 ): Promise<VideoCardData[]> => {
+  console.log("Call")
   const apiKey = process.env.YOUTUBE_API_KEY;
 
   if (!apiKey) return [];
@@ -76,16 +79,16 @@ export const getBarbakahnVideos = async (
 
     if (!resolvedChannelId) return [];
 
-    const searchData = await fetchYoutube<YoutubeSearchResponse>(
-      "search",
-      {
-        channelId: resolvedChannelId,
-        maxResults: "50",
-        part: "snippet",
-        type: "video",
-      },
-      apiKey,
-    );
+    const searchParams: Record<string, string> = {
+      channelId: resolvedChannelId,
+      maxResults: "50",
+      part: "snippet",
+      type: "video",
+    };
+
+    if (searchFilter !== undefined) searchParams.q = searchFilter;
+
+    const searchData = await fetchYoutube<YoutubeSearchResponse>("search", searchParams, apiKey);
     const videos = searchData.items.filter((video) => video.id.videoId);
     const videoIds = videos.flatMap((video) => (video.id.videoId ? [video.id.videoId] : []));
     const details = await getVideoDetails(videoIds, apiKey);

@@ -1,5 +1,13 @@
 # AI Changelog
 
+## 2026-09-29
+
+- Refactored archive search to use local client state and TanStack Query requests through `/api/videos`.
+
+## 2026-09-29
+
+- Added the `/api/videos` GET route for server-side video retrieval with optional search filtering.
+
 ## 2026-09-23
 
 - Added separate Videos and Shorts archive views using YouTube duration and title metadata.
